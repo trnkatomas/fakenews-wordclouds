@@ -8,6 +8,9 @@ import datetime
 import time
 import pytz
 import random
+from flask import Flask
+
+server = Flask('Fakenews wordclouds')
 
 import os
 from os import path
@@ -98,7 +101,7 @@ def create_date_slider(data_series):
         counter += 1
     return min_ts, max_ts, marks
 
-app_iplot = dash.Dash()
+app_iplot = dash.Dash('FakeNews headlines wordclouds', server=server)
 server = app_iplot.server
 
 min_ts, max_ts, marks = create_date_slider(data["parsed_date"])
